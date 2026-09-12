@@ -123,26 +123,28 @@ export async function hasAccess(
 // -------------------------------------------------------- grantAppAccess
 
 export interface GrantAccessParams {
-  userId: string;
+  email: string;
   app: string;
   scope?: string;
-  grantedBy?: string;
+  grantedBy: string;
+  source?: string;
+  actor: string;
   expiresAt?: string;
 }
 
 /**
  * Grant app access via the registry API (server-side, service role only).
  *
- * POST https://members.nogn.app/api/entitlements with the grant payload.
- * The registry route (being built by another coder) accepts the service token
- * and writes to the entitlements table.
+ * POST https://members.nogn.app/api/entitlements/grant with the grant payload.
+ * The registry route accepts the service token and writes to the entitlements
+ * table. Requires email (the identity key), granted_by, and actor.
  */
 export async function grantAppAccess(
   params: GrantAccessParams,
   cfg?: AccessClientConfig
 ): Promise<{ ok: boolean; error?: string }> {
   const { registryUrl, serviceToken, fetchFn } = resolveConfig(cfg);
-  const url = `${registryUrl}/api/entitlements`;
+  const url = `${registryUrl}/api/entitlements/grant`;
   try {
     const res = await fetchFn(url, {
       method: "POST",
@@ -152,10 +154,12 @@ export async function grantAppAccess(
         Accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: params.userId,
+        email: params.email,
         app: params.app,
         scope: params.scope ?? "content",
-        granted_by: params.grantedBy ?? "manual",
+        granted_by: params.grantedBy,
+        source: params.source ?? "manual",
+        actor: params.actor,
         expires_at: params.expiresAt ?? null,
       }),
     });
