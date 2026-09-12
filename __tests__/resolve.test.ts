@@ -13,7 +13,7 @@ import {
   hasScope,
   type ResolveInput,
   type Entitlements,
-} from "../src/resolve.js";
+} from "../src/resolve";
 
 const FUTURE = "2099-01-01T00:00:00.000Z";
 const PAST = "2020-01-01T00:00:00.000Z";

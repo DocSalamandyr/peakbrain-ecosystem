@@ -14,7 +14,7 @@ import {
   resolveEntitlements,
   type AppEntitlementRow,
   type Entitlements,
-} from "./resolve.js";
+} from "./resolve";
 
 // ------------------------------------------------------------ registry types
 

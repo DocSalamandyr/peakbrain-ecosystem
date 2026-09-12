@@ -17,7 +17,7 @@ export {
   type OrgSeat,
   type MembershipKind,
   type Entitlements,
-} from "./resolve.js";
+} from "./resolve";
 
 // Pricing catalog
 export {
@@ -29,13 +29,13 @@ export {
   type Scope,
   type ProfileKind,
   type PricingTier,
-} from "./catalog.js";
+} from "./catalog";
 
 // SSO cookie config
-export { getAuthCookieOptions } from "./cookie-config.js";
+export { getAuthCookieOptions } from "./cookie-config";
 
 // Tier-to-scope mapping
-export { scopeForTier } from "./scope.js";
+export { scopeForTier } from "./scope";
 
 // Vocabulary: app ids, scope names, app metadata, constants
 // Note: EcosystemAppId from resolve.ts covers the 4 original apps
@@ -51,8 +51,8 @@ export {
   type LegacyAppId,
   type AnyAppId,
   type EcosystemApp,
-} from "./vocabulary.js";
-export type { EcosystemAppId as WideAppId } from "./vocabulary.js";
+} from "./vocabulary";
+export type { EcosystemAppId as WideAppId } from "./vocabulary";
 
 // Registry-backed access client
 export {
@@ -65,11 +65,11 @@ export {
   type AccessClientConfig,
   type RegistryEntitlementsResponse,
   type RegistryEntitlementRow,
-} from "./access.js";
+} from "./access";
 
 // Neon Auth configuration and session types
 export {
   NEON_AUTH_ENV,
   type EcosystemUser,
   type EcosystemSession,
-} from "./auth.js";
+} from "./auth";

@@ -3,8 +3,8 @@
  * no network calls.
  */
 import { describe, it, expect } from "vitest";
-import { hasAccess, resolveEcosystemProfile } from "../src/access.js";
-import type { RegistryEntitlementsResponse } from "../src/access.js";
+import { hasAccess, resolveEcosystemProfile } from "../src/access";
+import type { RegistryEntitlementsResponse } from "../src/access";
 
 /** Build a mock fetch that returns the given registry response. */
 function mockFetch(response: RegistryEntitlementsResponse): typeof globalThis.fetch {
